@@ -31,65 +31,36 @@
       font-size: 1.2em;
       color: red;
     }
-    /* Intro screen */
-    .intro-container {
-      position: fixed; top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: #000;
-      display: flex; align-items: center; justify-content: center;
-      flex-direction: column; z-index: 9999;
+    /* Moon image sizing */
+    .moon-img {
+      max-width: 200px;
+      width: 100%;
+      height: auto;
+      margin: 20px auto;
+      display: block;
     }
+    /* Intro screen */
+    .intro-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; display: flex; align-items: center; justify-content: center; flex-direction: column; z-index: 9999; }
     .intro-slide { display: none; flex-direction: column; align-items: center; text-align: center; padding: 20px; }
     .intro-slide.active { display: flex; }
     .intro-first-date { font-size: 2.5em; color: white; }
-    .intro-first-line,
-    .intro-lines { font-size: 1.8em; color: #ffb6c1; }
+    .intro-first-line, .intro-lines { font-size: 1.8em; color: #ffb6c1; }
     .intro-quote { margin: 20px 0; }
-    .intro-verse1 {
-      font-size: 1.2em;
-      font-style: italic;
-      color: white;
-    }
-    .intro-verse2 {
-      font-size: 1.2em;
-      color: white;
-      margin-top: 10px;
-    }
+    .intro-verse1 { font-size: 1.2em; font-style: italic; color: white; }
+    .intro-verse2 { font-size: 1.2em; color: white; margin-top: 10px; }
     /* Surpresa button */
-    #surpresaBtn {
-      position: relative; background: red; color: #fff;
-      border: none; padding: 12px 30px; font-size: 1.2em;
-      cursor: pointer; overflow: hidden; border-radius: 5px;
-      margin-top: 20px;
-    }
-    #surpresaBtn::before {
-      content: '';
-      position: absolute; top: 0; left: -75%;
-      width: 50%; height: 100%;
-      background: rgba(255,255,255,0.3);
-      transform: skewX(-25deg); filter: blur(8px);
-      animation: shine 2s infinite;
-    }
+    #surpresaBtn { position: relative; background: red; color: #fff; border: none; padding: 12px 30px; font-size: 1.2em; cursor: pointer; overflow: hidden; border-radius: 5px; margin-top: 20px; }
+    #surpresaBtn::before { content: ''; position: absolute; top: 0; left: -75%; width: 50%; height: 100%; background: rgba(255,255,255,0.3); transform: skewX(-25deg); filter: blur(8px); animation: shine 2s infinite; }
     @keyframes shine { 0% { left: -75%; } 50% { left: 125%; } 100% { left: 125%; } }
     /* Hearts */
     .heart { position: absolute; pointer-events: none; font-size: 1.5em; color: red; opacity: 0; animation: floatUp 3s ease-out forwards; }
-    @keyframes floatUp {
-      0%   { opacity: 1; transform: translateY(0) scale(1); }
-      100% { opacity: 0; transform: translateY(-110vh) scale(1.5); }
-    }
+    @keyframes floatUp { 0% { opacity: 1; transform: translateY(0) scale(1); } 100% { opacity: 0; transform: translateY(-110vh) scale(1.5); } }
     /* Main Slideshow */
-    .slideshow-container {
-      position: relative; max-width: 90%; margin: 0 auto 40px; overflow: hidden; border-radius: 15px;
-    }
+    .slideshow-container { position: relative; max-width: 90%; margin: 0 auto 40px; overflow: hidden; border-radius: 15px; }
     .slideshow-container .slide { display: none; width: 100%; }
     .slideshow-container .slide img { width: 100%; border-radius: 15px; display: block; }
-    .slideshow-container .dots {
-      position: absolute; bottom: 10px; left: 0; width: 100%;
-      display: flex; justify-content: center; gap: 8px;
-    }
-    .slideshow-container .dot {
-      width: 12px; height: 12px; background: #fff; border-radius: 50%; cursor: pointer; opacity: 0.6;
-    }
+    .slideshow-container .dots { position: absolute; bottom: 10px; left: 0; width: 100%; display: flex; justify-content: center; gap: 8px; }
+    .slideshow-container .dot { width: 12px; height: 12px; background: #fff; border-radius: 50%; cursor: pointer; opacity: 0.6; }
     .slideshow-container .dot.active { background: red; opacity: 1; }
     h1.main-title { color: red; font-size: 2.5em; margin: 30px 0 10px; }
     .frase { font-size: 1em; max-width: 600px; margin: 0 auto 40px; }
@@ -115,75 +86,22 @@
       .solar-phrase { font-size: 1.2em; }
     }
     /* Additional Slideshow */
-    .slideshow-container.additional {
-      position: relative; max-width: 90%; margin: 0 auto 20px; overflow: hidden; border-radius: 15px;
-    }
+    .slideshow-container.additional { position: relative; max-width: 90%; margin: 0 auto 20px; overflow: hidden; border-radius: 15px; }
     .slideshow-container.additional .slide { display: none; width: 100%; }
     .slideshow-container.additional .slide img { width: 100%; border-radius: 15px; display: block; }
-    .slideshow-container.additional .dots {
-      position: absolute; bottom: 10px; left: 0; width: 100%;
-      display: flex; justify-content: center; gap: 8px;
-    }
-    .slideshow-container.additional .dot {
-      width: 12px; height: 12px; background: #fff; border-radius: 50%; cursor: pointer; opacity: 0.6;
-    }
+    .slideshow-container.additional .dots { position: absolute; bottom: 10px; left: 0; width: 100%; display: flex; justify-content: center; gap: 8px; }
+    .slideshow-container.additional .dot { width: 12px; height: 12px; background: #fff; border-radius: 50%; cursor: pointer; opacity: 0.6; }
     .slideshow-container.additional .dot.active { background: red; opacity: 1; }
-    .frase-additional {
-      font-size: 1em; max-width: 600px; margin: 10px auto 40px;
-      color: #fff;
-    }
+    .frase-additional { font-size: 1em; max-width: 600px; margin: 10px auto 40px; color: #fff; }
     /* Quiz styles */
-    #quiz-container {
-      max-width: 600px;
-      margin: 40px auto;
-      padding: 20px;
-      background: rgba(255,255,255,0.05);
-      border: 2px solid #ffb6c1;
-      border-radius: 10px;
-      text-align: left;
-    }
-    #quiz-container h2 {
-      color: #ffb6c1;
-      margin-bottom: 15px;
-    }
-    #quiz-container .question {
-      margin: 15px 0 5px;
-      font-size: 1.1em;
-      color: #fff;
-    }
-    #quiz-container select {
-      width: 100%;
-      padding: 8px;
-      margin-bottom: 10px;
-      border-radius: 5px;
-      border: 1px solid #555;
-      background: #111;
-      color: #fff;
-    }
-    #quiz-container button {
-      width: 100%;
-      padding: 10px;
-      font-size: 1em;
-      border: none;
-      border-radius: 5px;
-      background: #ffb6c1;
-      color: #000;
-      cursor: pointer;
-      margin-top: 10px;
-    }
-    #quiz-container button:disabled {
-      background: #555;
-      cursor: default;
-    }
-    #quiz-container .feedback {
-      margin-top: 10px;
-      font-weight: bold;
-    }
-    #quiz-container .final {
-      margin-top: 20px;
-      font-size: 1.2em;
-      color: #ffb6c1;
-    }
+    #quiz-container { max-width: 600px; margin: 40px auto; padding: 20px; background: rgba(255,255,255,0.05); border: 2px solid #ffb6c1; border-radius: 10px; text-align: left; }
+    #quiz-container h2 { color: #ffb6c1; margin-bottom: 15px; }
+    #quiz-container .question { margin: 15px 0 5px; font-size: 1.1em; color: #fff; }
+    #quiz-container select { width: 100%; padding: 8px; margin-bottom: 10px; border-radius: 5px; border: 1px solid #555; background: #111; color: #fff; }
+    #quiz-container button { width: 100%; padding: 10px; font-size: 1em; border: none; border-radius: 5px; background: #ffb6c1; color: #000; cursor: pointer; margin-top: 10px; }
+    #quiz-container button:disabled { background: #555; cursor: default; }
+    #quiz-container .feedback { margin-top: 10px; font-weight: bold; }
+    #quiz-container .final { margin-top: 20px; font-size: 1.2em; color: #ffb6c1; }
   </style>
 </head>
 <body>
@@ -232,16 +150,7 @@
     </div>
   </div>  <div class="separator"><span></span><i>❤</i><span></span></div>
   <h1 class="main-title">Rute & Renimar</h1>
-  <p class="frase">
-    Amar você não é um acaso, é uma escolha que eu faria mil vezes, todos os dias.
-    Com você, a vida não é apenas mais bonita… ela é mais inteira.
-    Você tem o dom de transformar o comum em especial, de trazer paz só com a presença, de me lembrar o que realmente importa.
-    Não há dúvidas em mim. Nenhuma.
-    É com você que eu quero dividir os silêncios e as gargalhadas, os domingos preguiçosos e os dias difíceis.
-    Quero construir um lar com o teu cheiro, com o som da nossa rotina e o calor de tudo que vamos viver juntos.
-    Filhos, planos, bagunça e amor: o tipo de amor que envelhece firme, lado a lado.
-    Não existe “até onde a vida vai nos levar”, porque já sei o caminho: é o seu nome, o seu riso, sua mão na minha.
-    Pra sempre não é tempo demais, quando é com você.
+  <p class="frase">Amar você não é um acaso, é uma escolha que eu faria mil vezes, todos os dias. Com você, a vida não é apenas mais bonita… ela é mais inteira. Você tem o dom de transformar o comum em especial, de trazer paz só com a presença, de me lembrar o que realmente importa. Não há dúvidas em mim. Nenhuma. É com você que eu quero dividir os silêncios e as gargalhadas, os domingos preguiçosos e os dias difíceis. Quero construir um lar com o teu cheiro, com o som da nossa rotina e o calor de tudo que vamos viver juntos. Filhos, planos, bagunça e amor: o tipo de amor que envelhece firme, lado a lado. Não existe “até onde a vida vai nos levar”, porque já sei o caminho: é o seu nome, o seu riso, sua mão na minha. Pra sempre não é tempo demais, quando é com você.
   </p>  <div class="separator"><span></span><i>❤</i><span></span></div>
   <h2>Compartilhando Momentos há</h2>
   <div class="contador-wrapper">
@@ -266,16 +175,18 @@
       <span class="dot" onclick="currentSlideAdditional(1)"></span>
     </div>
   </div>
-  <p class="frase-additional">
-    Nossos primeiros encontros começaram na pracinha de Lago da Pedra… onde o silêncio era convite e o olhar, promessa. Ali, nasceu algo que só o coração sabe ler, sem precisar dizer nada.
-  </p>  <!-- QUIZ -->  <div id="quiz-container">
+  <p class="frase-additional">Nossos primeiros encontros começaram na pracinha de Lago da Pedra… onde o silêncio era convite e o olhar, promessa.</p>  <!-- QUIZ -->  <div id="quiz-container">
     <h2>Quiz: Quanto você conhece a nossa história?</h2>
     <p class="question" id="question-area"></p>
     <select id="answer-select"></select>
     <button id="submit-answer">Responder</button>
     <p id="feedback" class="feedback"></p>
     <p id="final-result" class="final"></p>
-  </div>  <script>
+  </div>  <div class="separator"><span></span><i>❤</i><span></span></div>
+  <p class="solar-phrase">Naquela noite, a lua estava</p>
+  <h1 class="main-title" style="color: white; font-size: 2.5em;">Lua Crescente</h1>
+  <img src="crescente.webp" alt="Lua Crescente" class="moon-img">
+  <p class="solar-phrase">iluminando o começo da nossa história, que cresce e brilha a cada dia.</p>  <script>
     // Intro slideshow
     const introSlides = document.getElementsByClassName("intro-slide");
     let introIndex = 0;
@@ -373,11 +284,11 @@
 
     // QUIZ: Quanto você conhece o Renimar?
     const quiz = [
-      { q: "Qual é a comida preferida do Renimar?",        opts: ["Açaí","Pizza","Hambúrguer","Prato feito"], ans: "Prato feito" },
-      { q: "Qual é a cor preferida do Renimar?",           opts: ["Azul","Preto","Branco","Verde"],           ans: "Preto" },
-      { q: "Qual é o hobby favorito do Renimar?",          opts: ["Ler","Academia","Música","Jogos","Outros"], ans: "Academia" },
-      { q: "Qual é a estação do ano favorita do Renimar?", opts: ["Primavera","Verão","Outono","Inverno"],     ans: "Inverno" },
-      { q: "Qual é o tipo de bebida preferida do Renimar?",opts: ["Água","Refrigerante","Suco","Café","Chá"],   ans: "Café" },
+      { q: "Qual é a comida preferida do Renimar?", opts: ["Açaí","Pizza","Hambúrguer","Prato feito"], ans: "Prato feito" },
+      { q: "Qual é a cor preferida do Renimar?", opts: ["Azul","Preto","Branco","Verde"], ans: "Preto" },
+      { q: "Qual é o hobby favorito do Renimar?", opts: ["Ler","Academia","Música","Jogos","Outros"], ans: "Academia" },
+      { q: "Qual é a estação do ano favorita do Renimar?", opts: ["Primavera","Verão","Outono","Inverno"], ans: "Inverno" },
+      { q: "Qual é o tipo de bebida preferida do Renimar?", opts: ["Água","Refrigerante","Suco","Café","Chá"], ans: "Café" },
       { q: "Qual era a cor da sua roupa no primeiro beijo que vocês deram?", opts: ["Roxo","Cinza","Amarelo","Preto"], ans: "Preto" },
       { q: "Qual era a cor da roupa do Renimar no primeiro beijo que vocês deram?", opts: ["Roxo","Cinza","Amarelo","Preto"], ans: "Preto" },
       { q: "Qual é seu apelido carinhoso dado pelo Renimar?", opts: ["Melzinho","Docinho","Amorzinho","Neném"], ans: "Melzinho" },
