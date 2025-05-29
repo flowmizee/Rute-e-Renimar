@@ -233,7 +233,37 @@
         border-width: 15px 0 15px 26px;  
         border-color: transparent transparent transparent #ff0000;  
         margin-left: 5px;  
-      }  
+      }
+      /* WhatsApp button */
+      .whatsapp-button {
+        background: #25D366;
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        font-size: 1.2em;
+        border-radius: 50px;
+        cursor: pointer;
+        margin: 20px 0;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        transition: all 0.3s ease;
+        text-decoration: none;
+      }
+      .whatsapp-button:hover {
+        background: #128C7E;
+        transform: scale(1.05);
+      }
+      .whatsapp-button i {
+        font-size: 1.5em;
+      }
+      /* Made with love section */
+      .made-with-love {
+        font-size: 1.5em;
+        color: #ffb6c1;
+        margin: 40px 0;
+        font-style: italic;
+      }
     </style>    
   </head>    
   <body>    
@@ -358,6 +388,39 @@
     <img src="crescente.webp" alt="Lua Crescente" class="moon-img">    
     <p class="solar-phrase">iluminando o começo da nossa história, que cresce e brilha a cada dia.</p>    
 
+    <!-- Nova seção de cantinhos especiais -->
+    <div class="separator"><span></span><i>❤</i><span></span></div>
+    <h1 class="main-title" style="color: white;">Nossos cantinhos especiais em Lago da Pedra</h1>
+    
+    <div class="slideshow-container additional">
+      <div class="slide"><img src="pastel.webp" alt="Pastel"></div>
+      <div class="slide"><img src="del.webp" alt="Del"></div>
+      <div class="slide"><img src="shake.webp" alt="Shake"></div>
+      <div class="slide"><img src="hamburguer.webp" alt="Hambúrguer"></div>
+      <div class="slide"><img src="praca.webp" alt="Praça"></div>
+      <div class="dots">
+        <span class="dot" onclick="currentSlideSpecial(0)"></span>
+        <span class="dot" onclick="currentSlideSpecial(1)"></span>
+        <span class="dot" onclick="currentSlideSpecial(2)"></span>
+        <span class="dot" onclick="currentSlideSpecial(3)"></span>
+        <span class="dot" onclick="currentSlideSpecial(4)"></span>
+      </div>
+    </div>
+    <p class="frase-additional">Reveja nossos melhores momentos. Memórias marcantes em fotos</p>
+
+    <!-- Nova seção "Feito com todo carinho e amor do mundo" -->
+    <div class="separator"><span></span><i>❤</i><span></span></div>
+    <div class="made-with-love">
+      Feito com todo carinho e amor do mundo, só pra você 💖
+    </div>
+
+    <!-- Nova seção do botão do WhatsApp -->
+    <div class="separator"><span></span><i>❤</i><span></span></div>
+    <h1 class="main-title" style="color: white;">Falar com meu amor</h1>
+    <a href="https://wa.me/5598981420070" class="whatsapp-button" target="_blank">
+      <i>📱</i> Enviar mensagem
+    </a>
+
     <script>    
       // Intro slideshow    
       const introSlides = document.getElementsByClassName("intro-slide");    
@@ -421,6 +484,22 @@
       function currentSlideAdditional(n) { slideIndexAdd = n; showSlideAdditional(n); }    
       showSlideAdditional(0);    
       setInterval(nextSlideAdditional, 3000);    
+
+      // Special slideshow (novo slideshow para cantinhos especiais)
+      let slideIndexSpecial = 0;
+      const containerSpecial = document.getElementsByClassName("slideshow-container additional")[1],
+            slidesSpecial = containerSpecial.getElementsByClassName("slide"),
+            dotsSpecial = containerSpecial.getElementsByClassName("dot");
+      function showSlideSpecial(n) {
+        Array.from(slidesSpecial).forEach(s => s.style.display = 'none');
+        Array.from(dotsSpecial).forEach(d => d.classList.remove('active'));
+        slidesSpecial[n].style.display = 'block';
+        dotsSpecial[n].classList.add('active');
+      }
+      function nextSlideSpecial() { slideIndexSpecial = (slideIndexSpecial + 1) % slidesSpecial.length; showSlideSpecial(slideIndexSpecial); }
+      function currentSlideSpecial(n) { slideIndexSpecial = n; showSlideSpecial(n); }
+      showSlideSpecial(0);
+      setInterval(nextSlideSpecial, 3000);
 
       // Contador de tempo    
       const dataInicio = new Date(2024, 3, 20, 22, 0, 0);    
