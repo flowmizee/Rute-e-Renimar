@@ -41,17 +41,89 @@
         display: block;    
       }    
       /* Intro screen */    
-      .intro-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; display: flex; align-items: center; justify-content: center; flex-direction: column; z-index: 9999; }    
-      .intro-slide { display: none; flex-direction: column; align-items: center; text-align: center; padding: 20px; }    
+      .intro-container { 
+        position: fixed; 
+        top: 0; 
+        left: 0; 
+        width: 100%; 
+        height: 100%; 
+        background: #000; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        flex-direction: column; 
+        z-index: 9999; 
+      }    
+      .intro-content {
+        background: #D8A39D;
+        padding: 30px;
+        border-radius: 15px;
+        max-width: 90%;
+        width: 600px;
+        position: relative;
+      }
+      .intro-slide { 
+        display: none; 
+        flex-direction: column; 
+        align-items: center; 
+        text-align: center; 
+        padding: 20px; 
+        color: #333;
+      }    
       .intro-slide.active { display: flex; }    
-      .intro-first-date { font-size: 2.5em; color: white; }    
-      .intro-first-line, .intro-lines { font-size: 1.8em; color: #ffb6c1; }    
+      .intro-first-date { font-size: 2em; color: #ff0000; margin-bottom: 10px;}    
+      .intro-first-line, .intro-lines { font-size: 1.4em; color: #333; margin-bottom: 15px;}    
       .intro-quote { margin: 20px 0; }    
-      .intro-verse1 { font-size: 1.2em; font-style: italic; color: white; }    
-      .intro-verse2 { font-size: 1.2em; color: white; margin-top: 10px; }    
+      .intro-verse1 { font-size: 1.1em; font-style: italic; color: #555; }    
+      .intro-verse2 { font-size: 1.1em; color: #555; margin-top: 10px; }    
+      /* Ursinho image */
+      .ursinho-img {
+        max-width: 150px;
+        width: 100%;
+        height: auto;
+        margin: 0 auto 20px;
+        display: block;
+      }
+      /* Next arrow */
+      .next-arrow {
+        position: absolute;
+        bottom: 10px;
+        right: 20px;
+        font-size: 2em;
+        color: #ff0000;
+        cursor: pointer;
+        animation: bounce 2s infinite;
+      }
+      @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+        40% {transform: translateY(-10px);}
+        60% {transform: translateY(-5px);}
+      }
       /* Surpresa button */    
-      #surpresaBtn { position: relative; background: red; color: #fff; border: none; padding: 12px 30px; font-size: 1.2em; cursor: pointer; overflow: hidden; border-radius: 5px; margin-top: 20px; }    
-      #surpresaBtn::before { content: ''; position: absolute; top: 0; left: -75%; width: 50%; height: 100%; background: rgba(255,255,255,0.3); transform: skewX(-25deg); filter: blur(8px); animation: shine 2s infinite; }    
+      #surpresaBtn { 
+        background: red; 
+        color: #fff; 
+        border: none; 
+        padding: 12px 30px; 
+        font-size: 1.2em; 
+        cursor: pointer; 
+        overflow: hidden; 
+        border-radius: 5px; 
+        margin-top: 20px; 
+        position: relative;
+      }    
+      #surpresaBtn::before { 
+        content: ''; 
+        position: absolute; 
+        top: 0; 
+        left: -75%; 
+        width: 50%; 
+        height: 100%; 
+        background: rgba(255,255,255,0.3); 
+        transform: skewX(-25deg); 
+        filter: blur(8px); 
+        animation: shine 2s infinite; 
+      }    
       @keyframes shine { 0% { left: -75%; } 50% { left: 125%; } 100% { left: 125%; } }    
       /* Hearts */    
       .heart { position: absolute; pointer-events: none; font-size: 1.5em; color: red; opacity: 0; animation: floatUp 3s ease-out forwards; }    
@@ -85,6 +157,9 @@
         .orbit-container .sun { width: 50px; height: 50px; }    
         .orbit-container .earth { width: 30px; height: 30px; }    
         .solar-phrase { font-size: 1.2em; }    
+        .intro-first-date { font-size: 1.6em; }
+        .intro-first-line, .intro-lines { font-size: 1.2em; }
+        .intro-verse1, .intro-verse2 { font-size: 1em; }
       }    
       /* Additional Slideshow */    
       .slideshow-container.additional { position: relative; max-width: 90%; margin: 0 auto 20px; overflow: hidden; border-radius: 15px; }    
@@ -164,272 +239,279 @@
   <body>    
     <!-- Intro Slides -->    
     <div class="intro-container">    
-      <div class="intro-slide active">    
-        <p class="intro-first-date">20 de Abril de 2024</p>    
-        <p class="intro-first-line">Alguns encontros mudam nossas vidas para sempre...</p>    
-        <p class="intro-quote">    
-          <span class="intro-verse1">E naquele momento o tempo parou...</span>    
-          <span class="intro-verse2">e eu soube que nunca mais minha vida seria a mesma</span>    
-        </p>    
+      <div class="intro-content">
+        <img src="ursinho.gif" alt="Ursinho" class="ursinho-img">
+        <div class="intro-slide active">    
+          <p class="intro-first-date">20 de Abril de 2024</p>    
+          <p class="intro-first-line">Alguns encontros mudam nossas vidas para sempre...</p>    
+          <p class="intro-quote">    
+            <span class="intro-verse1">E naquele momento o tempo parou...</span>    
+            <span class="intro-verse2">e eu soube que nunca mais minha vida seria a mesma</span>    
+          </p>    
+          <div class="next-arrow" onclick="nextIntro()">➡</div>
+        </div>    
+        <div class="intro-slide">    
+          <p class="intro-lines">Cada momento ao seu lado é uma memória eterna...</p>    
+          <div class="next-arrow" onclick="nextIntro()">➡</div>
+        </div>    
+        <div class="intro-slide">    
+          <p class="intro-lines">Nossa história é feita de pequenos instantes mágicos...</p>    
+          <div class="next-arrow" onclick="nextIntro()">➡</div>
+        </div>    
+        <div class="intro-slide">    
+          <p class="intro-lines">Clique no botão abaixo para reviver nossa história...</p>    
+          <button id="surpresaBtn">Surpresa</button>    
+        </div>    
+      </div>
+    </div>    
+
+    <!-- Main Slideshow -->    
+    <div class="slideshow-container">    
+      <div class="slide"><img src="foto1.webp" alt="Foto 1"></div>    
+      <div class="slide"><img src="foto2.webp" alt="Foto 2"></div>    
+      <div class="slide"><img src="foto3.webp" alt="Foto 3"></div>    
+      <div class="slide"><img src="foto4.webp" alt="Foto 4"></div>    
+      <div class="slide"><img src="foto5.webp" alt="Foto 5"></div>    
+      <div class="slide"><img src="foto6.webp" alt="Foto 6"></div>    
+      <div class="slide"><img src="foto7.webp" alt="Foto 7"></div>    
+      <div class="slide"><img src="foto8.webp" alt="Foto 8"></div>    
+      <div class="slide"><img src="foto9.webp" alt="Foto 9"></div>    
+      <div class="slide"><img src="foto10.webp" alt="Foto 10"></div>    
+      <div class="dots">    
+        <span class="dot" onclick="currentSlide(0)"></span>    
+        <span class="dot" onclick="currentSlide(1)"></span>    
+        <span class="dot" onclick="currentSlide(2)"></span>    
+        <span class="dot" onclick="currentSlide(3)"></span>    
+        <span class="dot" onclick="currentSlide(4)"></span>    
+        <span class="dot" onclick="currentSlide(5)"></span>    
+        <span class="dot" onclick="currentSlide(6)"></span>    
+        <span class="dot" onclick="currentSlide(7)"></span>    
+        <span class="dot" onclick="currentSlide(8)"></span>    
+        <span class="dot" onclick="currentSlide(9)"></span>    
       </div>    
-      <div class="intro-slide">    
-        <p class="intro-lines">Cada momento ao seu lado é uma memória eterna...</p>    
+    </div>    
+
+    <div class="separator"><span></span><i>❤</i><span></span></div>    
+    <h1 class="main-title">Rute & Renimar</h1>    
+    <p class="frase">Amar você não é um acaso, é uma escolha que eu faria mil vezes, todos os dias. Com você, a vida não é apenas mais bonita… ela é mais inteira. Você tem o dom de transformar o comum em especial, de trazer paz só com a presença, de me lembrar o que realmente importa. Não há dúvidas em mim. Nenhuma. É com você que eu quero dividir os silêncios e as gargalhadas, os domingos preguiçosos e os dias difíceis. Quero construir um lar com o teu cheiro, com o som da nossa rotina e o calor de tudo que vamos viver juntos. Filhos, planos, bagunça e amor: o tipo de amor que envelhece firme, lado a lado. Não existe "até onde a vida vai nos levar", porque já sei o caminho: é o seu nome, o seu riso, sua mão na minha. Pra sempre não é tempo demais, quando é com você.    
+    </p>    
+
+    <div class="separator"><span></span><i>❤</i><span></span></div>    
+    <h2>Compartilhando Momentos há</h2>    
+    <div class="contador-wrapper">    
+      <div class="coluna"><label id="label-anos">Anos</label><span class="valor" id="anos">0</span></div>    
+      <div class="coluna"><label id="label-horas">Horas</label><span class="valor" id="horas">0</span></div>    
+      <div class="coluna"><label id="label-meses">Meses</label><span class="valor" id="meses">0</span></div>    
+      <div class="coluna"><label id="label-minutos">Minutos</label><span class="valor" id="minutos">0</span></div>    
+      <div class="coluna"><label id="label-dias">Dias</label><span class="valor" id="dias">0</span></div>    
+      <div class="coluna"><label id="label-segundos">Segundos</label><span class="valor" id="segundos">0</span></div>    
+    </div>    
+
+    <!-- Nova seção de vídeo -->  
+    <div class="separator"><span></span><i>❤</i><span></span></div>  
+    <div class="music-section">  
+      <p>Que tal dá um player na música</p>  
+      <p class="music-title">Que me faz lembrar de você?</p>  
+      <div class="video-container">  
+        <video id="music-video" controls poster="video-poster.jpg">  
+          <source src="vídeo.mp4" type="video/mp4">  
+          Seu navegador não suporta o elemento de vídeo.  
+        </video>  
+        <div class="video-poster" id="video-poster" style="background-image: url('video-poster.jpg');"></div>  
+      </div>  
+    </div>  
+
+    <div class="separator"><span></span><i>❤</i><span></span></div>    
+    <h1 class="history-title">Nossa História</h1>    
+    <p class="history-subtitle">Uma jornada de amor e momentos inesquecíveis.</p>    
+
+    <div class="orbit-container">    
+      <img src="sol.webp" alt="Sol" class="sun">    
+      <div class="orbit"><img src="terra.webp" alt="Terra" class="earth"></div>    
+    </div>    
+    <p class="solar-phrase">Juntos já completamos uma volta ao redor do sol... Dá pra acreditar?</p>    
+
+    <div class="separator"><span></span><i>❤</i><span></span></div>    
+    <div class="slideshow-container additional">    
+      <div class="slide"><img src="primeiro.webp" alt="Primeiro"></div>    
+      <div class="slide"><img src="segunda.webp" alt="Segunda"></div>    
+      <div class="dots">    
+        <span class="dot" onclick="currentSlideAdditional(0)"></span>    
+        <span class="dot" onclick="currentSlideAdditional(1)"></span>    
       </div>    
-      <div class="intro-slide">    
-        <p class="intro-lines">Nossa história é feita de pequenos instantes mágicos...</p>    
-      </div>    
-      <div class="intro-slide">    
-        <p class="intro-lines">Clique no botão abaixo para reviver nossa história...</p>    
-        <button id="surpresaBtn">Surpresa</button>    
-      </div>    
-    </div>    <!-- Main Slideshow -->    
-<div class="slideshow-container">    
-  <div class="slide"><img src="foto1.webp" alt="Foto 1"></div>    
-  <div class="slide"><img src="foto2.webp" alt="Foto 2"></div>    
-  <div class="slide"><img src="foto3.webp" alt="Foto 3"></div>    
-  <div class="slide"><img src="foto4.webp" alt="Foto 4"></div>    
-  <div class="slide"><img src="foto5.webp" alt="Foto 5"></div>    
-  <div class="slide"><img src="foto6.webp" alt="Foto 6"></div>    
-  <div class="slide"><img src="foto7.webp" alt="Foto 7"></div>    
-  <div class="slide"><img src="foto8.webp" alt="Foto 8"></div>    
-  <div class="slide"><img src="foto9.webp" alt="Foto 9"></div>    
-  <div class="slide"><img src="foto10.webp" alt="Foto 10"></div>    
-  <div class="dots">    
-    <span class="dot" onclick="currentSlide(0)"></span>    
-    <span class="dot" onclick="currentSlide(1)"></span>    
-    <span class="dot" onclick="currentSlide(2)"></span>    
-    <span class="dot" onclick="currentSlide(3)"></span>    
-    <span class="dot" onclick="currentSlide(4)"></span>    
-    <span class="dot" onclick="currentSlide(5)"></span>    
-    <span class="dot" onclick="currentSlide(6)"></span>    
-    <span class="dot" onclick="currentSlide(7)"></span>    
-    <span class="dot" onclick="currentSlide(8)"></span>    
-    <span class="dot" onclick="currentSlide(9)"></span>    
-  </div>    
-</div>    
+    </div>    
+    <p class="frase-additional">Nossos primeiros encontros começaram na pracinha de Lago da Pedra… onde o silêncio era convite e o olhar, promessa. Ali, nasceu algo que só o coração sabe ler, sem precisar dizer nada.</p>    
 
-<div class="separator"><span></span><i>❤</i><span></span></div>    
-<h1 class="main-title">Rute & Renimar</h1>    
-<p class="frase">Amar você não é um acaso, é uma escolha que eu faria mil vezes, todos os dias. Com você, a vida não é apenas mais bonita… ela é mais inteira. Você tem o dom de transformar o comum em especial, de trazer paz só com a presença, de me lembrar o que realmente importa. Não há dúvidas em mim. Nenhuma. É com você que eu quero dividir os silêncios e as gargalhadas, os domingos preguiçosos e os dias difíceis. Quero construir um lar com o teu cheiro, com o som da nossa rotina e o calor de tudo que vamos viver juntos. Filhos, planos, bagunça e amor: o tipo de amor que envelhece firme, lado a lado. Não existe "até onde a vida vai nos levar", porque já sei o caminho: é o seu nome, o seu riso, sua mão na minha. Pra sempre não é tempo demais, quando é com você.    
-</p>    
+    <!-- QUIZ -->    
+    <div id="quiz-container">    
+      <h2>Quiz: Quanto você conhece a nossa história?</h2>    
+      <p class="question" id="question-area"></p>    
+      <select id="answer-select"></select>    
+      <button id="submit-answer">Responder</button>    
+      <p id="feedback" class="feedback"></p>    
+      <p id="final-result" class="final"></p>    
+    </div>    
 
-<div class="separator"><span></span><i>❤</i><span></span></div>    
-<h2>Compartilhando Momentos há</h2>    
-<div class="contador-wrapper">    
-  <div class="coluna"><label id="label-anos">Anos</label><span class="valor" id="anos">0</span></div>    
-  <div class="coluna"><label id="label-horas">Horas</label><span class="valor" id="horas">0</span></div>    
-  <div class="coluna"><label id="label-meses">Meses</label><span class="valor" id="meses">0</span></div>    
-  <div class="coluna"><label id="label-minutos">Minutos</label><span class="valor" id="minutos">0</span></div>    
-  <div class="coluna"><label id="label-dias">Dias</label><span class="valor" id="dias">0</span></div>    
-  <div class="coluna"><label id="label-segundos">Segundos</label><span class="valor" id="segundos">0</span></div>    
-</div>    
+    <div class="separator"><span></span><i>❤</i><span></span></div>    
+    <p class="solar-phrase">Naquela noite, quando pedi você em namoro, a lua estava</p>    
+    <h1 class="main-title" style="color: white; font-size: 2.5em;">Lua Crescente</h1>    
+    <img src="crescente.webp" alt="Lua Crescente" class="moon-img">    
+    <p class="solar-phrase">iluminando o começo da nossa história, que cresce e brilha a cada dia.</p>    
 
-<!-- Nova seção de vídeo -->  
-<div class="separator"><span></span><i>❤</i><span></span></div>  
-<div class="music-section">  
-  <p>Que tal dá um player na música</p>  
-  <p class="music-title">Que me faz lembrar de você?</p>  
-  <div class="video-container">  
-    <video id="music-video" controls poster="video-poster.jpg">  
-      <source src="vídeo.mp4" type="video/mp4">  
-      Seu navegador não suporta o elemento de vídeo.  
-    </video>  
-    <div class="video-poster" id="video-poster" style="background-image: url('video-poster.jpg');"></div>  
-  </div>  
-</div>  
+    <script>    
+      // Intro slideshow    
+      const introSlides = document.getElementsByClassName("intro-slide");    
+      let introIndex = 0;    
+      function showIntro(n) {    
+        Array.from(introSlides).forEach(s => s.classList.remove("active"));    
+        introSlides[n].classList.add("active");    
+      }    
+      function nextIntro() {    
+        introIndex = Math.min(introSlides.length - 1, introIndex + 1);    
+        showIntro(introIndex);    
+      }    
 
-<div class="separator"><span></span><i>❤</i><span></span></div>    
-<h1 class="history-title">Nossa História</h1>    
-<p class="history-subtitle">Uma jornada de amor e momentos inesquecíveis.</p>    
+      // Surpresa hearts    
+      document.addEventListener('DOMContentLoaded', () => {    
+        const btn = document.getElementById('surpresaBtn');    
+        btn.addEventListener('click', () => {    
+          document.querySelector('.intro-container').style.display = 'none';    
+          const emitter = setInterval(createHeart, 100);    
+          setTimeout(() => clearInterval(emitter), 3000);    
+        });    
+      });    
+      function createHeart() {    
+        const heart = document.createElement('div');    
+        heart.className = 'heart';    
+        heart.textContent = '❤';    
+        heart.style.left = `${Math.random() * window.innerWidth}px`;    
+        heart.style.top  = `${window.innerHeight + 20}px`;    
+        heart.style.fontSize = `${Math.random() + 1}em`;    
+        document.body.appendChild(heart);    
+        heart.addEventListener('animationend', () => heart.remove());    
+      }    
 
-<div class="orbit-container">    
-  <img src="sol.webp" alt="Sol" class="sun">    
-  <div class="orbit"><img src="terra.webp" alt="Terra" class="earth"></div>    
-</div>    
-<p class="solar-phrase">Juntos já completamos uma volta ao redor do sol... Dá pra acreditar?</p>    
+      // Main slideshow    
+      let slideIndex = 0;    
+      const slides = document.getElementsByClassName("slideshow-container")[0].getElementsByClassName("slide"),    
+            dots   = document.getElementsByClassName("slideshow-container")[0].getElementsByClassName("dot");    
+      function showSlide(n) {    
+        Array.from(slides).forEach(s => s.style.display = 'none');    
+        Array.from(dots).forEach(d => d.classList.remove('active'));    
+        slides[n].style.display = 'block';    
+        dots[n].classList.add('active');    
+      }    
+      function nextSlide() { slideIndex = (slideIndex + 1) % slides.length; showSlide(slideIndex); }    
+      function currentSlide(n) { slideIndex = n; showSlide(n); }    
+      showSlide(0);    
+      setInterval(nextSlide, 3000);    
 
-<div class="separator"><span></span><i>❤</i><span></span></div>    
-<div class="slideshow-container additional">    
-  <div class="slide"><img src="primeiro.webp" alt="Primeiro"></div>    
-  <div class="slide"><img src="segunda.webp" alt="Segunda"></div>    
-  <div class="dots">    
-    <span class="dot" onclick="currentSlideAdditional(0)"></span>    
-    <span class="dot" onclick="currentSlideAdditional(1)"></span>    
-  </div>    
-</div>    
-<p class="frase-additional">Nossos primeiros encontros começaram na pracinha de Lago da Pedra… onde o silêncio era convite e o olhar, promessa. Ali, nasceu algo que só o coração sabe ler, sem precisar dizer nada.</p>    
+      // Additional slideshow    
+      let slideIndexAdd = 0;    
+      const containerAdd = document.getElementsByClassName("slideshow-container additional")[0],    
+            slidesAdd    = containerAdd.getElementsByClassName("slide"),    
+            dotsAdd      = containerAdd.getElementsByClassName("dot");    
+      function showSlideAdditional(n) {    
+        Array.from(slidesAdd).forEach(s => s.style.display = 'none');    
+        Array.from(dotsAdd).forEach(d => d.classList.remove('active'));    
+        slidesAdd[n].style.display = 'block';    
+        dotsAdd[n].classList.add('active');    
+      }    
+      function nextSlideAdditional() { slideIndexAdd = (slideIndexAdd + 1) % slidesAdd.length; showSlideAdditional(slideIndexAdd); }    
+      function currentSlideAdditional(n) { slideIndexAdd = n; showSlideAdditional(n); }    
+      showSlideAdditional(0);    
+      setInterval(nextSlideAdditional, 3000);    
 
-<!-- QUIZ -->    
-<div id="quiz-container">    
-  <h2>Quiz: Quanto você conhece a nossa história?</h2>    
-  <p class="question" id="question-area"></p>    
-  <select id="answer-select"></select>    
-  <button id="submit-answer">Responder</button>    
-  <p id="feedback" class="feedback"></p>    
-  <p id="final-result" class="final"></p>    
-</div>    
+      // Contador de tempo    
+      const dataInicio = new Date(2024, 3, 20, 22, 0, 0);    
+      function atualizarContador() {    
+        const agora = new Date();    
+        let anos   = agora.getFullYear()  - dataInicio.getFullYear();    
+        let meses  = agora.getMonth()     - dataInicio.getMonth();    
+        let dias   = agora.getDate()      - dataInicio.getDate();    
+        let horas  = agora.getHours()     - dataInicio.getHours();    
+        let mins   = agora.getMinutes()   - dataInicio.getMinutes();    
+        let segs   = agora.getSeconds()   - dataInicio.getSeconds();    
+        if (segs < 0) { segs += 60; mins--; }    
+        if (mins < 0) { mins += 60; horas--; }    
+        if (horas < 0) { horas += 24; dias--; }    
+        if (dias < 0) { const ld = new Date(agora.getFullYear(), agora.getMonth(), 0).getDate(); dias += ld; meses--; }    
+        if (meses < 0) { meses += 12; anos--; }    
+        document.getElementById("anos").textContent     = anos;    
+        document.getElementById("meses").textContent    = meses;    
+        document.getElementById("dias").textContent     = dias;    
+        document.getElementById("horas").textContent    = horas;    
+        document.getElementById("minutos").textContent  = mins;    
+        document.getElementById("segundos").textContent = segs;    
+        document.getElementById("label-anos").textContent     = anos   === 1 ? "Ano"     : "Anos";    
+        document.getElementById("label-meses").textContent    = meses  === 1 ? "Mês"     : "Meses";    
+        document.getElementById("label-dias").textContent     = dias   === 1 ? "Dia"     : "Dias";    
+        document.getElementById("label-horas").textContent    = horas  === 1 ? "Hora"    : "Horas";    
+        document.getElementById("label-minutos").textContent  = mins   === 1 ? "Minuto"  : "Minutos";    
+        document.getElementById("label-segundos").textContent = segs   === 1 ? "Segundo" : "Segundos";    
+      }    
+      setInterval(atualizarContador, 1000);    
+      atualizarContador();    
 
-<div class="separator"><span></span><i>❤</i><span></span></div>    
-<p class="solar-phrase">Naquela noite, quando pedi você em namoro, a lua estava</p>    
-<h1 class="main-title" style="color: white; font-size: 2.5em;">Lua Crescente</h1>    
-<img src="crescente.webp" alt="Lua Crescente" class="moon-img">    
-<p class="solar-phrase">iluminando o começo da nossa história, que cresce e brilha a cada dia.</p>    
+      // QUIZ: Quanto você conhece o Renimar?    
+      const quiz = [    
+        { q: "Qual é a comida preferida do Renimar?", opts: ["Açaí","Pizza","Hambúrguer","Prato feito"], ans: "Prato feito" },    
+        { q: "Qual é a cor preferida do Renimar?", opts: ["Azul","Preto","Branco","Verde"], ans: "Preto" },    
+        { q: "Qual é o hobby favorito do Renimar?", opts: ["Ler","Academia","Música","Jogos","Outros"], ans: "Academia" },    
+        { q: "Qual é a estação do ano favorita do Renimar?", opts: ["Primavera","Verão","Outono","Inverno"], ans: "Inverno" },    
+        { q: "Qual é o tipo de bebida preferida do Renimar?", opts: ["Água","Refrigerante","Suco","Café","Chá"], ans: "Café" },    
+        { q: "Qual era a cor da sua roupa no primeiro beijo que vocês deram?", opts: ["Roxo","Cinza","Amarelo","Preto"], ans: "Preto" },    
+        { q: "Qual era a cor da roupa do Renimar no primeiro beijo que vocês deram?", opts: ["Roxo","Cinza","Amarelo","Preto"], ans: "Preto" },    
+        { q: "Qual é seu apelido carinhoso dado pelo Renimar?", opts: ["Melzinho","Docinho","Amorzinho","Neném"], ans: "Melzinho" },    
+        { q: "Qual é o apelido carinhoso que você deu ao Renimar?", opts: ["Bombomzinho","Bombomzinho de Whey","Amorzinho","Neném"], ans: "Bombomzinho de Whey" }    
+      ];    
+      let current = 0, score = 0;    
+      const questionArea = document.getElementById("question-area"),    
+            selectEl     = document.getElementById("answer-select"),    
+            btn          = document.getElementById("submit-answer"),    
+            feedbackEl   = document.getElementById("feedback"),    
+            finalEl      = document.getElementById("final-result");    
 
-<script>    
-  // Intro slideshow    
-  const introSlides = document.getElementsByClassName("intro-slide");    
-  let introIndex = 0;    
-  function showIntro(n) {    
-    Array.from(introSlides).forEach(s => s.classList.remove("active"));    
-    introSlides[n].classList.add("active");    
-  }    
-  function nextIntro() {    
-    introIndex = Math.min(introSlides.length - 1, introIndex + 1);    
-    showIntro(introIndex);    
-  }    
-  setTimeout(() => { nextIntro(); setInterval(nextIntro, 3000); }, 8000);    
+      function loadQuestion() {    
+        if (current >= quiz.length) {    
+          const pct = Math.round((score / quiz.length) * 100);    
+          finalEl.textContent = `Você acertou ${pct}% das perguntas! 💖`;    
+          feedbackEl.textContent = "";    
+          questionArea.textContent = "";    
+          selectEl.style.display = "none";    
+          btn.disabled = true;    
+          return;    
+        }    
+        questionArea.textContent = quiz[current].q;    
+        selectEl.innerHTML = quiz[current].opts.map(o => `<option value="${o}">${o}</option>`).join("");    
+        feedbackEl.textContent = "";    
+      }    
 
-  // Surpresa hearts    
-  document.addEventListener('DOMContentLoaded', () => {    
-    const btn = document.getElementById('surpresaBtn');    
-    btn.addEventListener('click', () => {    
-      document.querySelector('.intro-container').style.display = 'none';    
-      const emitter = setInterval(createHeart, 100);    
-      setTimeout(() => clearInterval(emitter), 3000);    
-    });    
-  });    
-  function createHeart() {    
-    const heart = document.createElement('div');    
-    heart.className = 'heart';    
-    heart.textContent = '❤';    
-    heart.style.left = `${Math.random() * window.innerWidth}px`;    
-    heart.style.top  = `${window.innerHeight + 20}px`;    
-    heart.style.fontSize = `${Math.random() + 1}em`;    
-    document.body.appendChild(heart);    
-    heart.addEventListener('animationend', () => heart.remove());    
-  }    
+      btn.addEventListener("click", () => {    
+        const chosen = selectEl.value;    
+        const correct = quiz[current].ans;    
+        if (chosen === correct) {    
+          score++;    
+          feedbackEl.style.color = "#0f0";    
+          feedbackEl.textContent = "✅ Acertou!";    
+        } else {    
+          feedbackEl.style.color = "#f00";    
+          feedbackEl.textContent = `❌ Errou! Resposta certa: ${correct}`;    
+        }    
+        current++;    
+        setTimeout(loadQuestion, 1500);    
+      });    
 
-  // Main slideshow    
-  let slideIndex = 0;    
-  const slides = document.getElementsByClassName("slideshow-container")[0].getElementsByClassName("slide"),    
-        dots   = document.getElementsByClassName("slideshow-container")[0].getElementsByClassName("dot");    
-  function showSlide(n) {    
-    Array.from(slides).forEach(s => s.style.display = 'none');    
-    Array.from(dots).forEach(d => d.classList.remove('active'));    
-    slides[n].style.display = 'block';    
-    dots[n].classList.add('active');    
-  }    
-  function nextSlide() { slideIndex = (slideIndex + 1) % slides.length; showSlide(slideIndex); }    
-  function currentSlide(n) { slideIndex = n; showSlide(n); }    
-  showSlide(0);    
-  setInterval(nextSlide, 3000);    
+      loadQuestion();  
 
-  // Additional slideshow    
-  let slideIndexAdd = 0;    
-  const containerAdd = document.getElementsByClassName("slideshow-container additional")[0],    
-        slidesAdd    = containerAdd.getElementsByClassName("slide"),    
-        dotsAdd      = containerAdd.getElementsByClassName("dot");    
-  function showSlideAdditional(n) {    
-    Array.from(slidesAdd).forEach(s => s.style.display = 'none');    
-    Array.from(dotsAdd).forEach(d => d.classList.remove('active'));    
-    slidesAdd[n].style.display = 'block';    
-    dotsAdd[n].classList.add('active');    
-  }    
-  function nextSlideAdditional() { slideIndexAdd = (slideIndexAdd + 1) % slidesAdd.length; showSlideAdditional(slideIndexAdd); }    
-  function currentSlideAdditional(n) { slideIndexAdd = n; showSlideAdditional(n); }    
-  showSlideAdditional(0);    
-  setInterval(nextSlideAdditional, 3000);    
-
-  // Contador de tempo    
-  const dataInicio = new Date(2024, 3, 20, 22, 0, 0);    
-  function atualizarContador() {    
-    const agora = new Date();    
-    let anos   = agora.getFullYear()  - dataInicio.getFullYear();    
-    let meses  = agora.getMonth()     - dataInicio.getMonth();    
-    let dias   = agora.getDate()      - dataInicio.getDate();    
-    let horas  = agora.getHours()     - dataInicio.getHours();    
-    let mins   = agora.getMinutes()   - dataInicio.getMinutes();    
-    let segs   = agora.getSeconds()   - dataInicio.getSeconds();    
-    if (segs < 0) { segs += 60; mins--; }    
-    if (mins < 0) { mins += 60; horas--; }    
-    if (horas < 0) { horas += 24; dias--; }    
-    if (dias < 0) { const ld = new Date(agora.getFullYear(), agora.getMonth(), 0).getDate(); dias += ld; meses--; }    
-    if (meses < 0) { meses += 12; anos--; }    
-    document.getElementById("anos").textContent     = anos;    
-    document.getElementById("meses").textContent    = meses;    
-    document.getElementById("dias").textContent     = dias;    
-    document.getElementById("horas").textContent    = horas;    
-    document.getElementById("minutos").textContent  = mins;    
-    document.getElementById("segundos").textContent = segs;    
-    document.getElementById("label-anos").textContent     = anos   === 1 ? "Ano"     : "Anos";    
-    document.getElementById("label-meses").textContent    = meses  === 1 ? "Mês"     : "Meses";    
-    document.getElementById("label-dias").textContent     = dias   === 1 ? "Dia"     : "Dias";    
-    document.getElementById("label-horas").textContent    = horas  === 1 ? "Hora"    : "Horas";    
-    document.getElementById("label-minutos").textContent  = mins   === 1 ? "Minuto"  : "Minutos";    
-    document.getElementById("label-segundos").textContent = segs   === 1 ? "Segundo" : "Segundos";    
-  }    
-  setInterval(atualizarContador, 1000);    
-  atualizarContador();    
-
-  // QUIZ: Quanto você conhece o Renimar?    
-  const quiz = [    
-    { q: "Qual é a comida preferida do Renimar?", opts: ["Açaí","Pizza","Hambúrguer","Prato feito"], ans: "Prato feito" },    
-    { q: "Qual é a cor preferida do Renimar?", opts: ["Azul","Preto","Branco","Verde"], ans: "Preto" },    
-    { q: "Qual é o hobby favorito do Renimar?", opts: ["Ler","Academia","Música","Jogos","Outros"], ans: "Academia" },    
-    { q: "Qual é a estação do ano favorita do Renimar?", opts: ["Primavera","Verão","Outono","Inverno"], ans: "Inverno" },    
-    { q: "Qual é o tipo de bebida preferida do Renimar?", opts: ["Água","Refrigerante","Suco","Café","Chá"], ans: "Café" },    
-    { q: "Qual era a cor da sua roupa no primeiro beijo que vocês deram?", opts: ["Roxo","Cinza","Amarelo","Preto"], ans: "Preto" },    
-    { q: "Qual era a cor da roupa do Renimar no primeiro beijo que vocês deram?", opts: ["Roxo","Cinza","Amarelo","Preto"], ans: "Preto" },    
-    { q: "Qual é seu apelido carinhoso dado pelo Renimar?", opts: ["Melzinho","Docinho","Amorzinho","Neném"], ans: "Melzinho" },    
-    { q: "Qual é o apelido carinhoso que você deu ao Renimar?", opts: ["Bombomzinho","Bombomzinho de Whey","Amorzinho","Neném"], ans: "Bombomzinho de Whey" }    
-  ];    
-  let current = 0, score = 0;    
-  const questionArea = document.getElementById("question-area"),    
-        selectEl     = document.getElementById("answer-select"),    
-        btn          = document.getElementById("submit-answer"),    
-        feedbackEl   = document.getElementById("feedback"),    
-        finalEl      = document.getElementById("final-result");    
-
-  function loadQuestion() {    
-    if (current >= quiz.length) {    
-      const pct = Math.round((score / quiz.length) * 100);    
-      finalEl.textContent = `Você acertou ${pct}% das perguntas! 💖`;    
-      feedbackEl.textContent = "";    
-      questionArea.textContent = "";    
-      selectEl.style.display = "none";    
-      btn.disabled = true;    
-      return;    
-    }    
-    questionArea.textContent = quiz[current].q;    
-    selectEl.innerHTML = quiz[current].opts.map(o => `<option value="${o}">${o}</option>`).join("");    
-    feedbackEl.textContent = "";    
-  }    
-
-  btn.addEventListener("click", () => {    
-    const chosen = selectEl.value;    
-    const correct = quiz[current].ans;    
-    if (chosen === correct) {    
-      score++;    
-      feedbackEl.style.color = "#0f0";    
-      feedbackEl.textContent = "✅ Acertou!";    
-    } else {    
-      feedbackEl.style.color = "#f00";    
-      feedbackEl.textContent = `❌ Errou! Resposta certa: ${correct}`;    
-    }    
-    current++;    
-    setTimeout(loadQuestion, 1500);    
-  });    
-
-  loadQuestion();  
-
-  // Video poster click handler
-  document.getElementById('video-poster').addEventListener('click', function() {
-    const video = document.getElementById('music-video');
-    this.style.display = 'none';
-    video.style.display = 'block';
-    video.play();
-  });
-</script>
+      // Video poster click handler
+      document.getElementById('video-poster').addEventListener('click', function() {
+        const video = document.getElementById('music-video');
+        this.style.display = 'none';
+        video.style.display = 'block';
+        video.play();
+      });
+    </script>
 
   </body>  
 </html>
